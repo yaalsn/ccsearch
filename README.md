@@ -9,7 +9,13 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Rust](https://img.shields.io/badge/rust-stable-orange.svg)](https://www.rust-lang.org)
 
+**[🌐 Website](https://yaalsn.github.io/ccsearch/)** · **[⬇ Install](#install)** · **[⭐ Star](https://github.com/yaalsn/ccsearch)**
+
 `ccs <what you remember>` → ranked results → pick one → your shell `cd`s into the project and resumes the session.
+
+<br>
+
+<img src="assets/demo.svg" alt="ccsearch demo: searching Claude Code sessions and resuming one" width="780">
 
 </div>
 

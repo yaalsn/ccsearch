@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 360" width="840" height="360" font-family="ui-monospace,SFMono-Regular,Menlo,Consolas,monospace" font-size="14.5">
+  <rect x="1" y="1" width="838" height="358" rx="11" fill="#0d1117" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="1" y="1" width="838" height="42" rx="11" fill="#161b22"/>
+  <rect x="1" y="32" width="838" height="11" fill="#161b22"/>
+  <circle cx="26" cy="22" r="6" fill="#ff5f56"/>
+  <circle cx="48" cy="22" r="6" fill="#ffbd2e"/>
+  <circle cx="70" cy="22" r="6" fill="#27c93f"/>
+  <text x="420" y="27" fill="#7d8590" text-anchor="middle" font-size="13">ccs — search &amp; resume Claude Code sessions</text>
+
+  <text xml:space="preserve" fill="#c9d1d9">
+    <tspan x="26" y="76"><tspan fill="#3fb950">$</tspan> <tspan fill="#e6edf3">ccs logo pcb silkscreen</tspan></tspan>
+
+    <tspan x="26" y="112"><tspan fill="#56d4dd" font-weight="bold">[1]</tspan> <tspan fill="#e6edf3" font-weight="bold">Design a logo-shaped PCB business card</tspan>  <tspan fill="#6e7681">(1.03)</tspan></tspan>
+    <tspan x="60" y="134" fill="#6e7681">cc-logo-pcb · 4d ago · 96 msgs · main</tspan>
+    <tspan x="60" y="156" fill="#8b949e">…match the <tspan fill="#f2cc60" font-weight="bold">silkscreen</tspan> to the <tspan fill="#f2cc60" font-weight="bold">logo</tspan> outline, route the LED traces…</tspan>
+
+    <tspan x="26" y="192"><tspan fill="#56d4dd" font-weight="bold">[2]</tspan> <tspan fill="#e6edf3" font-weight="bold">KiCad footprint for the USB-C connector</tspan>  <tspan fill="#6e7681">(0.71)</tspan></tspan>
+    <tspan x="60" y="214" fill="#6e7681">cc-logo-pcb · 6d ago · 142 msgs · main</tspan>
+    <tspan x="60" y="236" fill="#8b949e">…the castellated <tspan fill="#f2cc60" font-weight="bold">pcb</tspan> pads aren't aligning with the footprint…</tspan>
+
+    <tspan x="26" y="278"><tspan fill="#e6edf3" font-weight="bold">Resume which? [1-6, Enter=cancel]</tspan> <tspan fill="#3fb950" font-weight="bold">1</tspan></tspan>
+    <tspan x="26" y="312"><tspan fill="#3fb950">→</tspan> <tspan fill="#7ee787">cd ~/code/cc-logo-pcb &amp;&amp; claude --resume 7f3a1c8e-…</tspan></tspan>
+  </text>
+</svg>

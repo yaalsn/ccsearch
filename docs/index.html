@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ccsearch — search &amp; resume your Claude Code sessions</title>
+<meta name="description" content="Fuzzy full-text, BM25-ranked search over your entire Claude Code history, with instant cross-shell resume. Chinese/CJK aware. Single binary for macOS, Linux, and Windows.">
+<meta name="keywords" content="Claude Code, session search, resume conversation, claude cli, fuzzy search, full-text search, BM25, SQLite FTS5, developer tools, terminal, rust cli">
+<link rel="canonical" href="https://yaalsn.github.io/ccsearch/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yaalsn.github.io/ccsearch/">
+<meta property="og:title" content="ccsearch — search &amp; resume your Claude Code sessions">
+<meta property="og:description" content="Full-text, BM25-ranked search over your Claude Code history — then jump back into any conversation in one keystroke. Cross-platform single binary.">
+<meta property="og:image" content="https://raw.githubusercontent.com/yaalsn/ccsearch/main/assets/demo.svg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ccsearch — search &amp; resume your Claude Code sessions">
+<meta name="twitter:description" content="Full-text, BM25-ranked search over your Claude Code history, with instant cross-shell resume. Chinese/CJK aware.">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/yaalsn/ccsearch/main/assets/demo.svg">
+<style>
+  :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --fg:#e6edf3; --muted:#8b949e; --accent:#56d4dd; --green:#3fb950; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .wrap { max-width:860px; margin:0 auto; padding:0 20px; }
+  header { text-align:center; padding:64px 20px 24px; }
+  h1 { font-size:44px; margin:0 0 8px; letter-spacing:-1px; }
+  .tag { font-size:20px; color:var(--muted); max-width:640px; margin:0 auto 22px; }
+  .badges img { height:22px; margin:3px; vertical-align:middle; }
+  .cta { margin:26px 0 8px; }
+  .btn { display:inline-block; padding:10px 20px; border-radius:8px; font-weight:600; margin:5px; }
+  .btn.primary { background:var(--green); color:#04140a; }
+  .btn.ghost { border:1px solid var(--border); color:var(--fg); }
+  code, pre { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+  pre { background:var(--panel); border:1px solid var(--border); border-radius:10px; padding:16px 18px; overflow-x:auto; font-size:14px; }
+  .demo { margin:32px auto; max-width:820px; }
+  .demo img, .demo svg { width:100%; height:auto; border-radius:12px; }
+  section { padding:26px 0; border-top:1px solid var(--border); }
+  h2 { font-size:26px; margin:0 0 16px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:16px; }
+  .card { background:var(--panel); border:1px solid var(--border); border-radius:12px; padding:16px 18px; }
+  .card h3 { margin:0 0 6px; font-size:17px; }
+  .card p { margin:0; color:var(--muted); font-size:14.5px; }
+  footer { text-align:center; color:var(--muted); padding:36px 20px 60px; border-top:1px solid var(--border); }
+  .k { color:var(--accent); }
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>ccsearch</h1>
+    <p class="tag">Full-text, <strong>BM25-ranked search</strong> over your entire Claude Code history — then jump back into any conversation in one keystroke.</p>
+    <p class="badges">
+      <a href="https://github.com/yaalsn/ccsearch/actions/workflows/ci.yml"><img src="https://github.com/yaalsn/ccsearch/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+      <a href="https://github.com/yaalsn/ccsearch/releases"><img src="https://img.shields.io/github/v/release/yaalsn/ccsearch?display_name=tag" alt="Release"></a>
+      <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="MIT">
+      <a href="https://github.com/yaalsn/ccsearch"><img src="https://img.shields.io/github/stars/yaalsn/ccsearch?style=social" alt="Stars"></a>
+    </p>
+    <div class="cta">
+      <a class="btn primary" href="#install">Install</a>
+      <a class="btn ghost" href="https://github.com/yaalsn/ccsearch">★ Star on GitHub</a>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="demo">
+    <img src="demo.svg" alt="ccsearch demo: searching Claude Code sessions and resuming one">
+  </div>
+
+  <section>
+    <h2>Why</h2>
+    <p><code>claude --resume</code> only lists AI-generated <em>titles</em>. If you don't recognize the title, you're stuck. <strong>ccsearch indexes the full text of every session</strong> — your prompts, Claude's replies, the commands it ran, the files it touched, even subagent transcripts — and ranks matches with BM25. Search by what actually happened.</p>
+  </section>
+
+  <section>
+    <h2>Features</h2>
+    <div class="grid">
+      <div class="card"><h3>🔎 Full-text, not titles</h3><p>Every message, tool call, and file path in your history is searchable.</p></div>
+      <div class="card"><h3>🏆 BM25 ranking</h3><p>SQLite FTS5 with title-weighted scoring surfaces the right session first.</p></div>
+      <div class="card"><h3>↩️ Instant resume</h3><p>Pick a result; your shell jumps into the project dir and resumes — and stays there.</p></div>
+      <div class="card"><h3>🀄 Chinese / CJK aware</h3><p>A custom bigram analyzer makes 2-character queries work where plain FTS5 can't.</p></div>
+      <div class="card"><h3>🧠 Semantic recall</h3><p><code>-e</code> expands your query with related terms when you can't recall the exact words.</p></div>
+      <div class="card"><h3>⚡ Single binary</h3><p>SQLite compiled in. Sub-50ms warm search. macOS, Linux, Windows; zsh/bash/fish/PowerShell.</p></div>
+    </div>
+  </section>
+
+  <section id="install">
+    <h2>Install</h2>
+    <pre><span class="k"># Cargo (any platform)</span>
+cargo install ccsearch
+
+<span class="k"># Homebrew (macOS / Linux)</span>
+brew install yaalsn/tap/ccsearch
+
+<span class="k"># Or download a prebuilt binary from Releases, then enable shell integration:</span>
+eval "$(ccs init zsh)"   <span class="k"># or bash / fish / powershell</span></pre>
+    <p>Then just <code>ccs &lt;what you remember&gt;</code>. Full docs on <a href="https://github.com/yaalsn/ccsearch">GitHub</a>.</p>
+  </section>
+
+  <section>
+    <h2>100% local &amp; private</h2>
+    <p>Indexing and search run entirely on your machine — your sessions never leave. Semantic mode sends only the short query text, never any conversation content.</p>
+  </section>
+</div>
+
+<footer>
+  <p><a href="https://github.com/yaalsn/ccsearch">GitHub</a> · <a href="https://github.com/yaalsn/ccsearch/releases">Releases</a> · <a href="https://github.com/yaalsn/ccsearch/issues">Issues</a> · MIT License</p>
+  <p>Made for people with too many Claude Code sessions.</p>
+</footer>
+</body>
+</html>
