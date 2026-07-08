@@ -16,6 +16,79 @@
 <meta name="twitter:title" content="ccsearch — search &amp; resume your Claude Code sessions">
 <meta name="twitter:description" content="Full-text, BM25-ranked search over your Claude Code history, with instant cross-shell resume. Chinese/CJK aware.">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/yaalsn/ccsearch/main/assets/demo.svg">
+<meta name="author" content="yaalsn">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
+<meta name="theme-color" content="#0d1117">
+
+<!-- Structured data for search engines & AI answer engines (GEO) -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "ccsearch",
+  "alternateName": "ccs",
+  "applicationCategory": "DeveloperApplication",
+  "applicationSubCategory": "Command Line Tool",
+  "operatingSystem": "macOS, Linux, Windows",
+  "description": "Full-text, BM25-ranked search over your entire Claude Code session history — every prompt, reply, command, file path, and subagent transcript — then resume any past conversation in one keystroke. Written in Rust, ships as a single static binary with SQLite FTS5, Chinese/CJK-aware, and 100% local.",
+  "url": "https://yaalsn.github.io/ccsearch/",
+  "downloadUrl": "https://github.com/yaalsn/ccsearch/releases",
+  "codeRepository": "https://github.com/yaalsn/ccsearch",
+  "programmingLanguage": "Rust",
+  "license": "https://opensource.org/licenses/MIT",
+  "keywords": "Claude Code, session search, resume conversation, claude cli, full-text search, BM25, SQLite FTS5, rust cli, CJK search, developer tools",
+  "author": { "@type": "Person", "name": "yaalsn" },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "featureList": [
+    "Full-text search over every message, tool call, and file path (not just titles)",
+    "BM25 relevance ranking with SQLite FTS5",
+    "Instant resume: jumps your shell into the project directory and runs claude --resume",
+    "Chinese/CJK-aware with 2-character queries via a custom bigram analyzer",
+    "Optional semantic recall that expands your query with related terms",
+    "Single static binary, sub-50ms warm search, 100% local"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is ccsearch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "ccsearch (command: ccs) is a fast, local command-line tool that runs full-text, BM25-ranked search over your entire Claude Code session history and lets you resume any past conversation in one keystroke. It is written in Rust and ships as a single static binary."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How is ccsearch different from claude --resume?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "claude --resume only lists AI-generated session titles. ccsearch indexes the full text of every session — prompts, replies, commands, file paths, and subagent transcripts — ranks matches with BM25, supports Chinese/CJK 2-character queries and optional semantic recall, and jumps your shell into the session's project directory before resuming."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does ccsearch send my code or conversations anywhere?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Indexing and search run entirely on your machine. The only thing that ever leaves your machine is the short query text passed to the optional semantic recall flag (-e), and only if you use it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I install ccsearch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run 'cargo install ccsearch' on any platform, or download a prebuilt binary from GitHub Releases. Then enable shell integration with eval \"$(ccs init zsh)\" (or bash, fish, powershell)."
+      }
+    }
+  ]
+}
+</script>
 <style>
   :root { --bg:#0d1117; --panel:#161b22; --border:#30363d; --fg:#e6edf3; --muted:#8b949e; --accent:#56d4dd; --green:#3fb950; }
   * { box-sizing:border-box; }
@@ -105,7 +178,7 @@ eval "$(ccs init zsh)"   <span class="k"># or bash / fish / powershell</span></p
 </div>
 
 <footer>
-  <p><a href="https://github.com/yaalsn/ccsearch">GitHub</a> · <a href="https://github.com/yaalsn/ccsearch/releases">Releases</a> · <a href="https://github.com/yaalsn/ccsearch/issues">Issues</a> · MIT License</p>
+  <p><a href="https://github.com/yaalsn/ccsearch">GitHub</a> · <a href="https://github.com/yaalsn/ccsearch/releases">Releases</a> · <a href="https://github.com/yaalsn/ccsearch/issues">Issues</a> · <a href="llms.txt">llms.txt</a> · MIT License</p>
   <p>Made for people with too many Claude Code sessions.</p>
 </footer>
 </body>

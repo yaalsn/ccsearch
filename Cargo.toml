@@ -11,7 +11,7 @@ homepage = "https://github.com/yaalsn/ccsearch"
 readme = "README.md"
 keywords = ["claude", "search", "cli", "resume", "sqlite"]
 categories = ["command-line-utilities"]
-exclude = ["/.github", "/assets", "/docs"]
+exclude = ["/.github", "/assets", "/docs", "/demo", "/promo"]
 
 [[bin]]
 name = "ccs"

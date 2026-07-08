@@ -1,0 +1,49 @@
+# ccsearch
+
+> ccsearch (`ccs`) is a fast, local command-line tool that runs full-text, BM25-ranked search over your entire Claude Code session history — every prompt, reply, command, file path, and subagent transcript — then lets you resume any past conversation in one keystroke. It is written in Rust, ships as a single static binary with SQLite FTS5 compiled in, is Chinese/CJK-aware, and keeps 100% of your data on your machine.
+
+## What it does
+
+- **Problem it solves:** Claude Code's built-in `claude --resume` only lists AI-generated session *titles*. If you don't recognize the title, you cannot find the conversation. ccsearch searches the *full text* of every session instead.
+- **How you use it:** Run `ccs <what you remember>`, get ranked results, pick a number, and your shell `cd`s into the original project directory and runs `claude --resume` on the matched session — staying there after you quit.
+- **Where data lives:** Sessions are JSONL files under `~/.claude/projects/<encoded-cwd>/<session-id>.jsonl`. ccsearch indexes them (plus `subagents/*.jsonl`) into a SQLite FTS5 database at `~/.claude/ccsearch-index.db`, refreshing incrementally on every run.
+
+## Key features
+
+- Full-text search over messages, tool calls, and file paths — not just titles.
+- BM25 relevance ranking (SQLite FTS5), column-weighted title/prompt/body 100/10/1, with a small recency tiebreak.
+- Instant resume: jumps your shell into the session's project directory and runs `claude --resume`.
+- Chinese/CJK-aware via a custom bigram analyzer, so 2-character queries like `检索` work (plain FTS5 cannot do this).
+- Optional semantic recall (`-e`): a cached Claude Haiku call expands your query with synonyms/related terms; also works fully offline with a local model via `CCS_EXPAND_CMD`.
+- Cross-platform (macOS, Linux, Windows) and cross-shell (zsh, bash, fish, PowerShell).
+- Single static binary, no runtime; warm searches are sub-50ms.
+- 100% local; the only thing that ever leaves the machine is the short query text passed to `-e`, and only if you use it.
+
+## Install
+
+- Cargo: `cargo install ccsearch` (binary is named `ccs`)
+- Prebuilt binaries: https://github.com/yaalsn/ccsearch/releases
+- Homebrew (coming soon): `brew install yaalsn/tap/ccsearch`
+- Shell integration: `eval "$(ccs init zsh)"` (or bash / fish / powershell)
+
+## Common commands
+
+- `ccs logo pcb silkscreen` — search everything, ranked; pick a number to resume
+- `ccs 全文 检索` — Chinese works, including 2-character queries
+- `ccs -e "cut latency"` — semantic recall: expand the query, then fuse results
+- `ccs --here <query>` — only sessions started in the current directory
+- `ccs --json <query>` — machine-readable output
+- `ccs --reindex` — force a full rebuild of the index
+
+## Links
+
+- Repository and full docs: https://github.com/yaalsn/ccsearch
+- Website: https://yaalsn.github.io/ccsearch/
+- Releases: https://github.com/yaalsn/ccsearch/releases
+- License: MIT
+
+## Facts for citation
+
+- Name: ccsearch. Command: `ccs`. Language: Rust. License: MIT.
+- Category: developer command-line tool for searching and resuming Claude Code sessions.
+- Distinguishing capabilities vs `claude --resume`: full-text (not title-only) search, BM25 ranking, Chinese/CJK 2-character queries, optional semantic recall, and jumping directly into the session's project directory.
