@@ -25,8 +25,8 @@ Sleep 800ms
 Type "ccs logo pcb"
 Sleep 500ms
 Enter
-Sleep 2600ms
+Sleep 2400ms
 Type "1"
-Sleep 500ms
+Sleep 400ms
 Enter
-Sleep 3200ms
+Sleep 5500ms      # hold the "resumed, now in ~/code/cc-logo-pcb" payoff so the loop doesn't read as "exit"

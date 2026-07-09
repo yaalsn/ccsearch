@@ -16,8 +16,9 @@ mkdir -p "$PROJ"
 # stub claude
 cat > "$BINDIR/claude" <<'SH'
 #!/bin/sh
-printf '\n  \033[38;5;114m⎿  Resumed · cc-logo-pcb · full conversation restored\033[0m\n'
-printf '  \033[2m   picking up: routing the LED traces around the logo silkscreen\033[0m\n\n'
+printf '\n  \033[38;5;114m✔ Resumed session · cc-logo-pcb · full conversation restored\033[0m\n'
+printf '  \033[2m  96 messages · last topic: routing the LED traces around the logo silkscreen\033[0m\n'
+printf '  \033[2m  quit Claude → you land back in the project directory, ready to keep going\033[0m\n\n'
 SH
 chmod +x "$BINDIR/claude"
 
