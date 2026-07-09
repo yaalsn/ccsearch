@@ -29,4 +29,4 @@ Sleep 2400ms
 Type "1"
 Sleep 400ms
 Enter
-Sleep 5500ms      # hold the "resumed, now in ~/code/cc-logo-pcb" payoff so the loop doesn't read as "exit"
+Sleep 4800ms      # hold on the resumed Claude Code session screen (the stub clears + renders it)

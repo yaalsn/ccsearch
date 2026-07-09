@@ -14,11 +14,21 @@ PROJ="$H/.claude/projects/$ENC"
 mkdir -p "$PROJ"
 
 # stub claude
+# The stub renders a mock *resumed Claude Code session* screen and holds on it
+# (sleep), so the demo ends INSIDE the restored session — not back at the shell.
+# VHS terminates the sleeping process when the tape's final Sleep elapses.
 cat > "$BINDIR/claude" <<'SH'
 #!/bin/sh
-printf '\n  \033[38;5;114m✔ Resumed session · cc-logo-pcb · full conversation restored\033[0m\n'
-printf '  \033[2m  96 messages · last topic: routing the LED traces around the logo silkscreen\033[0m\n'
-printf '  \033[2m  quit Claude → you land back in the project directory, ready to keep going\033[0m\n\n'
+clear
+printf '\n'
+printf '  \033[38;5;208m✻\033[0m \033[1mClaude Code\033[0m \033[2m— resumed session · ~/code/cc-logo-pcb · 96 messages\033[0m\n\n'
+printf '  \033[2m> make the silkscreen match the logo outline, route the LED traces\033[0m\n\n'
+printf '  \033[38;5;114m⏺\033[0m Silkscreen now follows the logo outline and the WS2812 LED traces are\n'
+printf '    routed around the perimeter — DRC passes. Panelize for JLCPCB next?\n\n'
+printf '  \033[38;5;240m─────────────────────────────────────────────────────────────────\033[0m\n'
+printf '  \033[38;5;114m>\033[0m \033[7m \033[0m \033[2mTry "panelize it for JLCPCB"\033[0m\n'
+printf '  \033[38;5;240m─────────────────────────────────────────────────────────────────\033[0m\n'
+sleep 60
 SH
 chmod +x "$BINDIR/claude"
 
