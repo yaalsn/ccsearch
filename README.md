@@ -15,7 +15,7 @@
 
 <br>
 
-<img src="assets/demo.svg" alt="ccsearch demo: searching Claude Code sessions and resuming one" width="780">
+<img src="assets/demo.gif" alt="ccsearch demo: searching Claude Code sessions and resuming one" width="820">
 
 </div>
 
